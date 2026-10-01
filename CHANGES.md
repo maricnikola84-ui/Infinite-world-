@@ -1,10 +1,33 @@
-# v2.4 → v2.5 changes
+# Changes
 
-`world.json` is the file to import. `world_original.json` is your untouched v2.4. Rebuild with `python3 tools/apply_v25.py`.
+`world.json` is the file to import (now **v2.6**). `world_original.json` is your untouched v2.4. Rebuild everything with `cd tools && python3 apply_v26.py` (it regenerates v2.5 first).
 
-**Unchanged on purpose:** the adult-mode section, the Sexual descriptor tracker, all 18 trackers and their starting values, all 14 triggers, the character, background, summaryRequest and reply-length bands.
+**Unchanged on purpose:** the adult-mode section, the Sexual descriptor tracker, all 18 original trackers and their starting values, the character, background, and reply-length bands. Leaving a world remains the player's decision.
 
-## Every edit
+## v2.6 — canon, DM Mode, trackers, story engine
+Full text of every addition: REVIEW_v26.md.
+- block added: CORE_CANON_FIDELITY
+- instructions: hard rule pointing to CORE_CANON_FIDELITY
+- tracker added: WORLD CANON SHEET (everyone)
+- lore added: TYPE_MOON_PRIMER
+- block CORE_DM_MODE: replaced with summary + ACTIVE MODE BLOCKS rule
+- 12 DM_MODE_* blocks + 24 load/unload triggers reading DM Mode tracker aOdWCctxj
+- descriptionRequest: final check for DM Mode register (last line)
+- authorStyle: points to active DM_MODE_* blocks
+- tracker added: WORLD GOALS (everyone)
+- tracker added: FACTIONS & REPUTATION (ai_only_boring)
+- tracker added: ASCENDANT VIEWS (ai_only_boring)
+- block CORE_STATE_OWNERSHIP: new trackers listed
+- summaryRequest: objectives defer to WORLD GOALS
+- trigger ASCENDANT_CONTACT: use ASCENDANT VIEWS
+- block DYNAMIC_WORLD_ENTRY: write WORLD CANON SHEET
+- trigger WORLD_ENTRY: write WORLD CANON SHEET
+- trigger WORLD_EXIT: crossing rule
+- trigger WORLD_EXIT: archive/clear new trackers, review ASCENDANT VIEWS
+- block CORE_PREMISE: crossing rule
+- instructions: story_engine section added before (unchanged) adult section
+
+## v2.5 — consolidation and fixes
 - hideSkillSystem=true, allowChangeCharacterSkills=false (SKILLS & TRAINING is the single skill owner)
 - block DYNAMIC_COMBAT: start empty (COMBAT_START trigger loads it)
 - block CORE_SKILLS: D100 only when a roll is supplied (matched evaluation contract)
